@@ -22,7 +22,7 @@ public class Shield {
     }
     
     public Shield(){
-        this("basic",10,3);
+        this("basic",10,5);
     }
     
     public String getName(){

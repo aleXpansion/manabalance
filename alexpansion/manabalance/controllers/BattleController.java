@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import alexpansion.manabalance.entity.*;
+import alexpansion.manabalance.exceptions.*;
 import alexpansion.manabalance.moves.Attack;
 
 public class BattleController {
@@ -14,19 +15,19 @@ public class BattleController {
     private Enemy enemy;
     private ArrayList<ActiveAttack> attacks;
     final Timer timer;
-    private int fieldLength = 100;
+    private int fieldLength = 10;
 
     public BattleController() {
 
         //initialize variables        
-        player = new Mage("me",5);
+        player = new Mage("me",450,500,1);
         enemy = new Enemy("not me",5);
         frame = new BattleFrame(this);
         attacks = new ArrayList(1);
 
         timer = new Timer();
         final TickTask add = new TickTask();
-        timer.scheduleAtFixedRate(add, 0, 50);
+        timer.scheduleAtFixedRate(add, 0, 250);
 
         //set up frame
         frame.setNames(player.getName(), enemy.getName());
@@ -54,9 +55,6 @@ public class BattleController {
         frame.update();
     }
 
-    /*public void clicked(JButton button){
-        
-     }*/
     public void attack(int attackNum, Mage target, Mage source) {
         Attack type = source.getAttacks()[attackNum];
         ActiveAttack newAttack = new ActiveAttack(type, target);
@@ -98,13 +96,23 @@ public class BattleController {
     }
     
     public void activateShield(Mage mage, int ShieldNum){
-        
+        try{
+            mage.shieldUp(ShieldNum, 1);
+        }
+        catch(SlotFullException e){
+            System.out.println("Slot is full!");
+        }
+        catch(InsufficientManaException e){
+            System.out.println("Not enough mana!");
+        }
     }
     
     public void deactivateShield(Mage mage, int ShieldNum){
         
     }
 
+    
+    //<editor-fold defaultstate="collapsed" desc="getter methods">
     public Mage getPlayer() {
         return player;
     }
@@ -116,6 +124,7 @@ public class BattleController {
     public ArrayList getAttacks() {
         return attacks;
     }
+    //</editor-fold>
 
     private final class TickTask extends TimerTask {
 
