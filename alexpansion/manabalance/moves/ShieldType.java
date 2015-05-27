@@ -23,7 +23,7 @@ public class ShieldType {
         return castCost;
     }
     public int getStrength(){
-        return strength;
+        return strength; 
     }
     
     public boolean equals(Object obj){
