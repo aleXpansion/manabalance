@@ -16,7 +16,7 @@ public class Pool {
     int mixed = 0;
 
     public Pool() {
-        this.bunches = new ArrayList();
+        this.bunches = new ArrayList<Bunch>();
     }
     
     public void addBunch(Bunch newBunch){

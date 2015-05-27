@@ -6,6 +6,8 @@
 package manabalance;
 
 import alexpansion.manabalance.controllers.BattleController;
+import alexpansion.manabalance.entity.Mage;
+import alexpansion.manabalance.helper.TaskManager;
 
 /**
  *
@@ -17,7 +19,11 @@ public class ManaBalance {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        BattleController battle = new BattleController();
+    	TaskManager.init();
+    	Mage player = new Mage("Danny", 10);
+    	//player.build(ConstructType.Generator);
+        @SuppressWarnings("unused")
+		BattleController battle = new BattleController(player);
     }
     
 }

@@ -1,6 +1,6 @@
 package alexpansion.manabalance.entity;
 
-import alexpansion.manabalance.moves.Attack;
+import alexpansion.manabalance.moves.AttackType;
 
 /**
  *
@@ -9,12 +9,12 @@ import alexpansion.manabalance.moves.Attack;
 
 
 public class ActiveAttack{
-    Attack type;
+    AttackType type;
     int progress;
     int toMove;
     Mage target;
     
-    public ActiveAttack(Attack newType,Mage target){
+    public ActiveAttack(AttackType newType,Mage target){
         toMove = 0;
         type = newType;
         this.target = target;
@@ -30,7 +30,7 @@ public class ActiveAttack{
         return progress;
     }
     
-    public Attack getType(){
+    public AttackType getType(){
         return type;
     }
     

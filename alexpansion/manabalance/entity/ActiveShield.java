@@ -5,7 +5,7 @@
  */
 package alexpansion.manabalance.entity;
 
-import alexpansion.manabalance.moves.Shield;
+import alexpansion.manabalance.moves.ShieldType;
 
 /**
  *
@@ -13,16 +13,16 @@ import alexpansion.manabalance.moves.Shield;
  */
 public class ActiveShield {
     
-    private Shield type;
+    private ShieldType type;
     private Mage owner;
     
-    public ActiveShield(Shield type,Mage caster){
+    public ActiveShield(ShieldType type,Mage caster){
         this.type = type;
         owner = caster;
     }
     
     //getter methods
-    public Shield getType(){
+    public ShieldType getType(){
         return type;
     }
     

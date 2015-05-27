@@ -15,7 +15,7 @@ public class Bunch {
     Mage owner;
     int mana;
     
-    public void Bunch(Mage owner){
+    public Bunch(Mage owner){
         this.owner = owner;
     }
     
